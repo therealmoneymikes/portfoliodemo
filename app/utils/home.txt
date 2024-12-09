@@ -1,0 +1,62 @@
+
+In next js components in the app folder
+are server-side
+
+
+For client side rendering:
+
+1. use the "use client" at the head of the file
+2. Extract only the neccessary aspects that are client side 
+   and then import it into the Product Card
+
+a. Fetching on the client is useState + useEffect
+b. Resource Intensive 
+c. No SEO
+d. Less Secure
+e. Extra Roundtrip to server
+
+
+Static rendering
+If you pages or components have static data
+next js can render it once and then store in it the cache
+and render when the application starts
+
+Dynamic Rendering
+Is when something is render based on the request time
+
+
+//In production the timestamp wont change
+
+a circle in the npm run build exec means static data
+lamada means server side
+
+
+///////////CSS MODULES/////////////
+A CSS module is a file that is scoped to a component/page
+
+uses tool postCSS to transform CSS class names are used by defult
+we can change the config
+
+layout.tsx
+loading.tsx
+route.tsx - APIs
+not-found.tsx - Errors
+error
+
+
+//////Routing/////
+[...slug] allows use to create a varying number of arguments
+[[...slug]] allows to the optional arguments so that we can have variable amount of 
+pages so from 0-3
+
+
+//In back end we use query string parameters to pass state 
+//rather using state and eventlisteners on the front end
+
+//Link Component
+/1.Only downloads the content of the target page
+/2.It pre-fetches the link that it prefetchs the links that in the viewport 
+/3.Caches pages on the client
+
+//Production Grade
+//npm run build then npm start

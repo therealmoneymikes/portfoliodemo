@@ -1,0 +1,137 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum AccountActions {
+  PURCHASE
+  LOGIN
+  LOGOUT
+  SUBMIT
+  MISC
+}
+
+enum ClientType {
+  Company
+  Individual
+}
+
+model User {
+  id            String      @id @default(cuid())
+  email         String      @unique
+  emailVerified Boolean     @default(false)
+  username      String      @unique
+  password      String
+  phone         String      @unique
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  account       Account?
+  profile       Profile?
+  ipAddress     IpAddress[]
+}
+
+model IpAddress {
+  id        String   @id @default(cuid())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  ipAddress String
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}
+
+model ClientContact {
+  id         String     @id @default(cuid())
+  firstname  String
+  lastname   String
+  clientType ClientType
+  email      String
+  phone      String
+  message    String     @db.VarChar(255)
+  createdAt  DateTime   @default(now())
+}
+
+model Profile {
+  id     String  @id @default(cuid())
+  bio    String?
+  avatar String?
+  user   User    @relation(fields: [userId], references: [id])
+  userId String  @unique
+}
+
+model Account {
+  id                 String     @id @default(cuid())
+  userId             String     @unique
+  user               User       @relation(fields: [userId], references: [id])
+  sessions           Session[]
+  activity           Activity[]
+  providerType       String
+  providerId         String
+  providerAccountId  String
+  refreshToken       String?
+  accessToken        String?
+  accessTokenExpires DateTime?
+  createdAt          DateTime   @default(now())
+  updatedAt          DateTime   @updatedAt
+
+  @@index([userId, providerId])
+}
+
+model Session {
+  id String @id @default(cuid())
+
+  expires      DateTime
+  sessionToken String   @unique
+  accessToken  String   @unique
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  account      Account  @relation(fields: [accountId], references: [id])
+  accountId    String
+
+  @@index([accountId])
+}
+
+//Having unique on mode userId and accountId because a user can perform multiple acitivi
+model Activity {
+  //One activity can have many actions
+  id        String   @id @default(cuid())
+  action    Action[]
+  account   Account  @relation(fields: [accountId], references: [id])
+  accountId String
+  createdAt DateTime @default(now())
+
+  @@index([accountId])
+}
+
+model Action {
+  //One single action by an account 
+  id          String         @id @default(cuid())
+  type        AccountActions
+  description String
+  createdAt   DateTime       @default(now())
+  activity    Activity       @relation(fields: [activityId], references: [id])
+  activityId  String         @unique
+
+  @@index([id, activityId])
+}
+
+model VerificationRequest {
+  id         String   @id @default(cuid())
+  identifier String
+  token      String   @unique
+  expires    DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([id, identifier])
+}
