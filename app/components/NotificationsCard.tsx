@@ -1,6 +1,7 @@
 import { BellIcon, CheckIcon } from "@radix-ui/react-icons";
 
-import { cn } from "@/lib/utils";
+
+import { cn } from "../utils/classmerger";
 import { Button } from "@/app/components/ui/button";
 import {
   Card,
