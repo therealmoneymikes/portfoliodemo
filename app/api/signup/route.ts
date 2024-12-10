@@ -7,7 +7,7 @@ import { Resend } from "resend";
 import WelcomeTemplate from "../../../emails/WelcomeTemplate";
 
 let user: any;
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY_MAIN!);
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
