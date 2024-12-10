@@ -1,9 +1,9 @@
-import prisma from "@/app/utils/prismaClient";
-import { userLoginSchema } from "@/app/utils/schema";
+import prisma from "../../../app/utils/prismaClient"
+import { userLoginSchema } from "../../../app/utils/schema";
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { getClientIP, storeIPAddress } from "@/app/utils/ipaddress";
+// import { getClientIP, storeIPAddress } from "@/app/utils/ipaddress";
 
 const key = process.env.LOGIN_PRIVATE_KEY;
 

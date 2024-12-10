@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { Component } from "react";
-import { error as debugError } from "@/app/utils/logger";
+import { error as debugError } from "../../../app/utils/logger"
 import ErrorPage from "../ErrorPage";
 
 interface ErrorBoundaryProps {

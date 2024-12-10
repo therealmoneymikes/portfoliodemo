@@ -1,7 +1,7 @@
 "use client";
 import React, { ReactNode, useEffect, useState } from "react";
 import { ThemeContextType } from "./ThemeContext";
-import ThemeContext from "@/app/providers/theme/ThemeContext";
+import ThemeContext from  "../../../app/providers/theme/ThemeContext"
 
 interface ThemeProviderProps {
   children: ReactNode;

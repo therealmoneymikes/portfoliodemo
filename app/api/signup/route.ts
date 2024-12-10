@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import prisma from "@/app/utils/prismaClient";
-import { getClientIP, storeIPAddress } from "@/app/utils/ipaddress";
+import prisma from "../../../app/utils/prismaClient";
+// import { getClientIP, storeIPAddress } from "@/app/utils/ipaddress";
 import bcrypt from "bcrypt";
-import { userSignUpSchema } from "@/app/utils/schema";
+import { userSignUpSchema } from "../../utils/schema";
 import { Resend } from "resend";
-import WelcomeTemplate from "@/emails/WelcomeTemplate";
+import WelcomeTemplate from "../../../emails/WelcomeTemplate";
 
 let user: any;
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -65,7 +65,7 @@ export async function POST(request: NextRequest) {
       to: user.email,
       subject: "Welcome!",
       react: WelcomeTemplate({ name: body.username }),
-      scheduledAt: ContactDelay
+      scheduledAt: ContactDelay,
     });
 
     return NextResponse.json(

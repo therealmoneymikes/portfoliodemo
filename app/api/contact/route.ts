@@ -1,5 +1,5 @@
-import prisma from "@/app/utils/prismaClient";
-import { contactSchema} from "@/app/utils/schema";
+import prisma from "../../../app/utils/prismaClient";
+import { contactSchema } from "../../../app/utils/schema"
 import { NextRequest, NextResponse } from "next/server";
 // import { Resend } from "resend";
 // import WelcomeTemplate from "@/emails/WelcomeTemplate";

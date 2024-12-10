@@ -4,7 +4,7 @@ import AuthContext, { User } from "./AuthContext";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-import { apiUrl } from "@/app/utils/urls";
+import { apiUrl } from "../../../app/utils/urls"
 interface AuthProviderProps {
   children: ReactNode;
   deps?: any[];
