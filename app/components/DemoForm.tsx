@@ -14,7 +14,7 @@ import { contactSchema, contactSchemaType } from "../utils/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { AiFillMail, AiOutlineLoading } from "react-icons/ai";
-import { cn } from "../utils/classmerger";
+// import { cn } from "../utils/classmerger";
 // MEWO
 interface Props {
   appearance: string;
