@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Box, Button, Tabs, Text } from "@radix-ui/themes";
 import { useSession } from "next-auth/react";
-import DateRangePicker from "@/app/components/DateRangePicker";
+import DateRangePicker from "../components/DateRangePicker"
 import {
   AiFillNotification,
   AiFillShopping,

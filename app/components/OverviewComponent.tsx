@@ -10,7 +10,7 @@ import {
   ChartTooltipContent,
   ChartTooltip,
   ChartLegend,
-} from "@/app/components/ui/chart";
+} from "../components/ui/chart";
 
 //It doesn't preserve the original shape of the object as the satisfies keyword does.
 const chartConfig = {
