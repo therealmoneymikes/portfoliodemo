@@ -4,10 +4,10 @@ import prisma from "../../../app/utils/prismaClient";
 import bcrypt from "bcrypt";
 import { userSignUpSchema } from "../../utils/schema";
 import { Resend } from "resend";
-import WelcomeTemplate from "../../../emails/WelcomeTemplate";
+// import WelcomeTemplate from "../../../emails/WelcomeTemplate";
 
 let user: any;
-const resend = new Resend(process.env.RESEND_API_KEY_MAIN!);
+// const resend = new Resend(process.env.RESEND_API_KEY_MAIN!);
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -55,28 +55,34 @@ export async function POST(request: NextRequest) {
         phone: body.phone,
       },
     });
-
+} catch(error){
+  const errorIssue = error instanceof Error ? error.message : error
+  return NextResponse.json({
+    message: "Error", errors: errorIssue, status: 500
+  })
+}
+}
     // const ipAddress = getClientIP(request);
     // await storeIPAddress(user!.id, ipAddress);
     //Add domain here
-    const ContactDelay = new Date(Date.now() + 1000 * 30).toISOString();
-    await resend.emails.send({
-      from: "Mike <admin@mikethedev.com>",
-      to: user.email,
-      subject: "Welcome!",
-      react: WelcomeTemplate({ name: body.username }),
-      scheduledAt: ContactDelay,
-    });
+//     const ContactDelay = new Date(Date.now() + 1000 * 30).toISOString();
+//     await resend.emails.send({
+//       from: "Mike <admin@mikethedev.com>",
+//       to: user.email,
+//       subject: "Welcome!",
+//       react: WelcomeTemplate({ name: body.username }),
+//       scheduledAt: ContactDelay,
+//     });
 
-    return NextResponse.json(
-      { message: "Signup successful", data: user },
-      { status: 201 }
-    );
-  } catch (error) {
-    console.error("Signup Error:", error);
-    return NextResponse.json(
-      { message: "An unexpected error occurred" },
-      { status: 500 }
-    );
-  }
-}
+//     return NextResponse.json(
+//       { message: "Signup successful", data: user },
+//       { status: 201 }
+//     );
+//   } catch (error) {
+//     console.error("Signup Error:", error);
+//     return NextResponse.json(
+//       { message: "An unexpected error occurred" },
+//       { status: 500 }
+//     );
+//   }
+// }
