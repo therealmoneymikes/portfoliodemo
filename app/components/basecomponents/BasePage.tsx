@@ -1,9 +1,9 @@
 "use client";
 import { motion } from "framer-motion";
 import React, { ReactNode } from "react";
-import { useCustomThemeContext } from "@/app/providers/theme/useCustomThemeProvider";
+import { useCustomThemeContext } from "../../../app/providers/theme/useCustomThemeProvider";
 import classNames from "classnames";
-import { cn } from "@/app/utils/classmerger";
+import { cn } from "../../../app/utils/classmerger"
 
 interface Props {
   children?: ReactNode;
