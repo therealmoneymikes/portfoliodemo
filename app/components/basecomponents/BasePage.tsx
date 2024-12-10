@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import React, { ReactNode } from "react";
 import { useCustomThemeContext } from "../../../app/providers/theme/useCustomThemeProvider";
 import classNames from "classnames";
-import { cn } from "../../../app/utils/classmerger"
+import { cn } from "../../../app/utils/classmerger";
 
 interface Props {
   children?: ReactNode;
@@ -11,7 +11,7 @@ interface Props {
   subtitle?: string;
   mainTitleStyle?: string;
   subtitleStyle?: string;
-  image?: ReactNode
+  image?: ReactNode;
 }
 const BasePage = ({
   children,
@@ -19,12 +19,11 @@ const BasePage = ({
   subtitle,
   mainTitleStyle,
   subtitleStyle,
-  image
+  image,
 }: Props) => {
   const { appearance, getAppearance, currentWindowDimensions } =
     useCustomThemeContext();
 
-    
   return (
     <div>
       <motion.div>
@@ -43,7 +42,6 @@ const BasePage = ({
           {mainTitle}
         </motion.h1>
         <motion.h2
-          
           className={`${cn(
             mainTitleStyle
           )} mt-10 mx-10 text-center font-extralight text-wrap whitespace-nowrap tracking-wide text-xl md:text-2xl lg:text-3xl  `}
@@ -51,8 +49,6 @@ const BasePage = ({
           {subtitle}
         </motion.h2>
         {children}
-
-        
       </motion.div>
     </div>
   );
