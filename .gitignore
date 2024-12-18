@@ -5,7 +5,8 @@
 /.pnp
 .pnp.js
 .yarn/install-state.gz
-
+#vscode
+.vscode/
 # testing
 /coverage
 
@@ -45,3 +46,5 @@ input.scss
 .react-email/
 
 error.txt
+dns.txt
+home.txt

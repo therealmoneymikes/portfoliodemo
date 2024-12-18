@@ -1,9 +1,9 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Michael",
+  name: "",//Add your name here
   description:
-    "Mike The Dev", //Add your description for you next project clone here
+    "", //Add your description for you next project clone here
   mainNav: [
     {
       title: "Home",
@@ -11,8 +11,8 @@ export const siteConfig = {
     },
   ],
   links: {
-    twitter: "https://twitter.com/csacademyio", //"Add your twitter here"
-    github: "https://github.com/therealmoneymikes",//"Add your github here for your portfolio"
+    twitter: "", //"Add your twitter here"
+    github: "",//"Add your github here for your portfolio"
 
   },
 };
