@@ -136,14 +136,7 @@ const Navbar = ({ appearance, scrollVisible }: Props) => {
   return (
     <AnimatePresence>
       <motion.nav
-        initial={{ scale: 0 }}
-        animate={{ rotate: 0, scale: 1 }}
-        exit={{ rotate: 0, scale: 1 }}
-        transition={{
-          type: "spring",
-          stiffness: 260,
-          damping: 60,
-        }}
+     
         style={{
           backgroundColor: appearance === "light" ? "#0a0a0a" : "#000000",
           color: "white",
